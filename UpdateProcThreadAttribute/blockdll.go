@@ -34,7 +34,7 @@ func CreateProcess(startupInfo syscalls.StartupInfoEx){
 		nil,
 		&startupInfo,
 		&procInfo);
-	err != nil {
+		err != nil {
 		log.Printf("CreateProcess failed: %v\n", err)
 	}
 
@@ -52,8 +52,8 @@ func main(){
 	_ = syscalls.InitializeProcThreadAttributeList(startupInfo.AttributeList, 2, 0, &procThreadAttributeSize)
 	mitigate := 0x20007 //"PROC_THREAD_ATTRIBUTE_MITIGATION_POLICY"
 	//Options for Block Dlls
-	nonms := uintptr(0x100000000000)     //"PROCESS_CREATION_MITIGATION_POLICY_BLOCK_NON_MICROSOFT_BINARIES_ALWAYS_ON"
-	onlystore := uintptr(0x300000000000) //"BLOCK_NON_MICROSOFT_BINARIES_ALLOW_STORE"
+	nonms := uintptr(0x100000000000|0x1000000000)     //"PROCESS_CREATION_MITIGATION_POLICY_BLOCK_NON_MICROSOFT_BINARIES_ALWAYS_ON"|"PROCESS_CREATION_MITIGATION_POLICY_PROHIBIT_DYNAMIC_CODE_ALWAYS_ON"
+	onlystore := uintptr(0x300000000000|0x1000000000) //"BLOCK_NON_MICROSOFT_BINARIES_ALLOW_STORE"
 	block := "nonms"
 
 	if block == "nonms" {
