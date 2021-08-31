@@ -1,7 +1,7 @@
 # Doge-BlockDLLs
 Preventing 3rd Party DLLs from Injecting into your Malware
 
-ACG(Arbitrary Code Guard)的方式等大佬来实现
+ACG(Arbitrary Code Guard)的方式采用cgo实现，dynamic code prohibit未能成功实现
 
 
 ### Ref
@@ -9,6 +9,7 @@ https://www.ired.team/offensive-security/defense-evasion/preventing-3rd-party-dl
 
 https://blog.xpnsec.com/protecting-your-malware/
 
+https://3gstudent.github.io/Cobalt_Strike%E7%9A%84blockdlls%E5%88%A9%E7%94%A8%E5%88%86%E6%9E%90
 
 ## etc
 1. 开源的样本大部分可能已经无法免杀,需要自行修改
